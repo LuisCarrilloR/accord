@@ -45,7 +45,7 @@ func parse(f *ast.File) (*Config, error) {
 		}
 	}
 
-	if modules := list.Filter("accord"); len(modules.Items) > 0 {
+	if modules := list.Filter("module"); len(modules.Items) > 0 {
 		var err error
 		acc.Modules, err = loadModules(modules)
 		if err != nil {

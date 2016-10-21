@@ -50,8 +50,8 @@ func serve() error {
 		ReadTimeout:  15 * time.Second,
 	}
 
+	color.Green("\nStub server listening on 127.0.0.1:%s\n", port)
 	return srv.ListenAndServe()
-
 }
 
 func newHandler(ep *accord.Endpoint) http.HandlerFunc {

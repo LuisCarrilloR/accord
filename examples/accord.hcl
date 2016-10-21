@@ -1,4 +1,4 @@
-accord "test-accord" {
+module "test-accord" {
   source = "github.com/datascienceinc/accord//examples/test.hcl"
 }
 

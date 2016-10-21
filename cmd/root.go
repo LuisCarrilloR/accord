@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/datascienceinc/accord/pkg/module"
+	"github.com/fatih/color"
 	getter "github.com/hashicorp/go-getter"
 	"github.com/spf13/cobra"
 )
@@ -38,7 +39,6 @@ func init() {
 	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $CWD/.accord)")
 }
 
-// initConfig reads in config file and ENV variables if set.
 func initConfig(cmd *cobra.Command, args []string) {
 	if cfgFile == "" { // enable ability to specify config file via flag
 		cfgFile = "accord.hcl"
@@ -49,6 +49,7 @@ func initConfig(cmd *cobra.Command, args []string) {
 		log.Fatalln(err)
 	}
 
+	color.Blue("Loading accord and resolving dependencies...")
 	err = tree.Load(&getter.FolderStorage{
 		StorageDir: filepath.Join(DefaultDataDir, "modules"),
 	})
